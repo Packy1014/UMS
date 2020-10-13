@@ -61,7 +61,7 @@ public class SysLoginService
             throw new BaseException(userResult.getMsg());
         }
 
-        if (StringUtils.isNull(userResult) || StringUtils.isNull(userResult.getData()))
+        if (StringUtils.isNull(userResult.getData()))
         {
             remoteLogService.saveLogininfor(username, Constants.LOGIN_FAIL, "登录用户不存在");
             throw new BaseException("登录用户：" + username + " 不存在");
