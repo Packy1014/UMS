@@ -1,7 +1,9 @@
 package com.ruoyi.common.security.aspect;
 
-import java.lang.reflect.Method;
-import java.util.Collection;
+import com.ruoyi.common.core.exception.PreAuthorizeException;
+import com.ruoyi.common.security.annotation.PreAuthorize;
+import com.ruoyi.common.security.service.TokenService;
+import com.ruoyi.system.api.model.LoginUser;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -12,10 +14,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.PatternMatchUtils;
 import org.springframework.util.StringUtils;
-import com.ruoyi.common.core.exception.PreAuthorizeException;
-import com.ruoyi.common.security.annotation.PreAuthorize;
-import com.ruoyi.common.security.service.TokenService;
-import com.ruoyi.system.api.model.LoginUser;
+
+import java.lang.reflect.Method;
+import java.util.Collection;
 
 /**
  * 自定义权限实现
@@ -123,7 +124,7 @@ public class PreAuthorizeAspect
      */
     public boolean lacksPermi(String permission)
     {
-        return hasPermi(permission) != true;
+        return !hasPermi(permission);
     }
 
     /**
@@ -181,7 +182,7 @@ public class PreAuthorizeAspect
      */
     public boolean lacksRole(String role)
     {
-        return hasRole(role) != true;
+        return !hasRole(role);
     }
 
     /**

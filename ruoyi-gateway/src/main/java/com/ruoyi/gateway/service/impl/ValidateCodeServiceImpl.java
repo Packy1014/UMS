@@ -1,13 +1,5 @@
 package com.ruoyi.gateway.service.impl;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import javax.annotation.Resource;
-import javax.imageio.ImageIO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.FastByteArrayOutputStream;
 import com.google.code.kaptcha.Producer;
 import com.ruoyi.common.core.constant.Constants;
 import com.ruoyi.common.core.exception.CaptchaException;
@@ -17,6 +9,15 @@ import com.ruoyi.common.core.utils.sign.Base64;
 import com.ruoyi.common.core.web.domain.AjaxResult;
 import com.ruoyi.common.redis.service.RedisService;
 import com.ruoyi.gateway.service.ValidateCodeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.FastByteArrayOutputStream;
+
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 验证码实现处理
@@ -42,7 +43,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
      * 生成验证码
      */
     @Override
-    public AjaxResult createCapcha() throws IOException, CaptchaException
+    public AjaxResult createCaptcha() throws IOException, CaptchaException
     {
         // 保存验证码信息
         String uuid = IdUtils.simpleUUID();
@@ -87,7 +88,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService
      * 校验验证码
      */
     @Override
-    public void checkCapcha(String code, String uuid) throws CaptchaException
+    public void checkCaptcha(String code, String uuid) throws CaptchaException
     {
         if (StringUtils.isEmpty(code))
         {

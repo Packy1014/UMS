@@ -1,13 +1,13 @@
 package com.ruoyi.system.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import com.ruoyi.common.core.web.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.ruoyi.common.core.web.domain.BaseEntity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 菜单权限表 sys_menu
@@ -230,7 +230,7 @@ public class SysMenu extends BaseEntity
             .append("path", getPath())
             .append("component", getComponent())
             .append("isFrame", getIsFrame())
-            .append("IsCache", getIsCache())
+            .append("isCache", getIsCache())
             .append("menuType", getMenuType())
             .append("visible", getVisible())
             .append("status ", getStatus())
